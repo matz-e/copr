@@ -34,24 +34,24 @@ cargo build --release
 
 %install
 install -D -m755 target/release/%{name} %{buildroot}/%{_bindir}/%{name}
-install -D -m644 Alacritty.desktop %{buildroot}/%{_datadir}/applications/Alacritty.desktop
+#install -D -m644 Alacritty.desktop %{buildroot}/%{_datadir}/applications/Alacritty.desktop
 install -d -m755 %{buildroot}/%{_datadir}/%{name}
 install -m644 alacritty*.yml %{buildroot}/%{_datadir}/%{name}
 install -d -m755 %{buildroot}/%{_datadir}/terminfo/a
 tic -o %{buildroot}/%{_datadir}/terminfo alacritty.info
 
-%post
-update-desktop-database &> /dev/null ||:
-
-%postun
-update-desktop-database &> /dev/null ||:
-
-%posttrans
-desktop-file-validate %{_datadir}/applications/alacritty.desktop &> /dev/null || :
+#%post
+#update-desktop-database &> /dev/null ||:
+#
+#%postun
+#update-desktop-database &> /dev/null ||:
+#
+#%posttrans
+#desktop-file-validate %{_datadir}/applications/alacritty.desktop &> /dev/null || :
 
 %files
 %{_bindir}/alacritty
-%{_datadir}/applications/*.desktop
+#%{_datadir}/applications/*.desktop
 %{_datadir}/%{name}/*.yml
 %{_datadir}/terminfo/*
 
