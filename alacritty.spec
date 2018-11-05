@@ -9,7 +9,7 @@ Release:        1%{?dist}
 URL:            %{git_url}
 
 Version:        0.2.1.git%{abbrev}
-Source0:        %{git_url}/archive/%{git_rev}#/%{git_owner}-%{name}-%{abbrev}.tar.gz
+Source0:        %{git_url}/archive/%{commit/%{git_owner}-%{name}-%{abbrev}.tar.gz
 
 Requires:       freetype-devel
 Requires:       fontconfig-devel
