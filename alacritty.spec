@@ -26,7 +26,7 @@ Alacritty is the fastest terminal emulator in existence. Using the GPU for
 rendering enables optimizations that simply aren't possible in other emulators.
 
 %prep
-%setup -qn %{git_owner}-%{name}-%{abbrev}
+%setup -qn %{name}-%{commit}
 
 %build
 cargo build --release
