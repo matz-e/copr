@@ -19,6 +19,7 @@ BuildRequires:  cmake
 
 BuildRequires:  rust
 BuildRequires:  cargo
+BuildRequires:  gcc-c++
 
 
 %description
