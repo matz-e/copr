@@ -11,11 +11,11 @@ URL:            %{git_url}
 Version:        0.2.1.git%{abbrev}
 Source0:        %{git_url}/archive/%{commit}/%{git_owner}-%{name}-%{abbrev}.tar.gz
 
-Requires:       freetype-devel
-Requires:       fontconfig-devel
 Requires:       xclip
 
 BuildRequires:  cmake
+BuildRequires:  freetype-devel
+BuildRequires:  fontconfig-devel
 
 BuildRequires:  rust
 BuildRequires:  cargo
