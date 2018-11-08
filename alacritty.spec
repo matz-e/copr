@@ -1,6 +1,6 @@
 %define git_owner       jwilm
 %define git_url         https://github.com/%{git_owner}/%{name}
-%define commit          0e49bfb02a80c480df802f2f0a79dc2fa0de6753
+%define commit          81617983bb4b3b17f18dab938bb572757aa54920
 %define abbrev          %(c=%{commit}; echo ${c:0:7})
 Name:           alacritty
 Summary:        A cross-platform, GPU enhanced terminal emulator
@@ -8,7 +8,8 @@ License:        ASL 2.0
 Release:        1%{?dist}
 URL:            %{git_url}
 
-Version:        0.2.1.git%{abbrev}
+Version:        0.2.1
+Release:        2.git%{abbrev}%{?dist}
 Source0:        %{git_url}/archive/%{commit}/%{git_owner}-%{name}-%{abbrev}.tar.gz
 
 Requires:       xclip
@@ -56,6 +57,9 @@ tic -o %{buildroot}/%{_datadir}/terminfo alacritty.info
 %{_datadir}/terminfo/*
 
 %changelog
+* Mon Nov 05 2018 Poppy Schmo <oranenj@iki.fi> 0.2.1-2.git8161798
+- Build from git with COPR
+
 * Mon Nov 05 2018 Poppy Schmo <oranenj@iki.fi> 0.2.1-1
 - Build from git with COPR
 
