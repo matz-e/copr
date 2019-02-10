@@ -1,6 +1,6 @@
 %define git_owner       jwilm
 %define git_url         https://github.com/%{git_owner}/%{name}
-%define commit          81617983bb4b3b17f18dab938bb572757aa54920
+%define commit          d62fe71b6071a9cc1b520c0e87c96111a719327a
 %define abbrev          %(c=%{commit}; echo ${c:0:7})
 Name:           alacritty
 Summary:        A cross-platform, GPU enhanced terminal emulator
@@ -8,7 +8,7 @@ License:        ASL 2.0
 Release:        1%{?dist}
 URL:            %{git_url}
 
-Version:        0.2.1
+Version:        0.2.7
 Release:        2.git%{abbrev}%{?dist}
 Source0:        %{git_url}/archive/%{commit}/%{git_owner}-%{name}-%{abbrev}.tar.gz
 
