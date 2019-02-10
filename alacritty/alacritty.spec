@@ -2,10 +2,11 @@
 %define git_url         https://github.com/%{git_owner}/%{name}
 %define commit          d62fe71b6071a9cc1b520c0e87c96111a719327a
 %define abbrev          %(c=%{commit}; echo ${c:0:7})
+
 Name:           alacritty
 Summary:        A cross-platform, GPU enhanced terminal emulator
 License:        ASL 2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            %{git_url}
 
 Version:        0.2.7
@@ -27,31 +28,31 @@ Alacritty is the fastest terminal emulator in existence. Using the GPU for
 rendering enables optimizations that simply aren't possible in other emulators.
 
 %prep
-%setup -qn %{name}-%{commit}
+%autosetup -n %{name}-%{commit}
 
 %build
 cargo build --release
 
 %install
 install -D -m755 target/release/%{name} %{buildroot}/%{_bindir}/%{name}
-#install -D -m644 Alacritty.desktop %{buildroot}/%{_datadir}/applications/Alacritty.desktop
+install -D -m644 alacritty.desktop %{buildroot}/%{_datadir}/applications/alacritty.desktop
 install -d -m755 %{buildroot}/%{_datadir}/%{name}
 install -m644 alacritty*.yml %{buildroot}/%{_datadir}/%{name}
 install -d -m755 %{buildroot}/%{_datadir}/terminfo/a
 tic -o %{buildroot}/%{_datadir}/terminfo alacritty.info
 
-#%post
-#update-desktop-database &> /dev/null ||:
-#
-#%postun
-#update-desktop-database &> /dev/null ||:
-#
-#%posttrans
-#desktop-file-validate %{_datadir}/applications/alacritty.desktop &> /dev/null || :
+%post
+update-desktop-database &> /dev/null ||:
+
+%postun
+update-desktop-database &> /dev/null ||:
+
+%posttrans
+desktop-file-validate %{_datadir}/applications/alacritty.desktop &> /dev/null || :
 
 %files
 %{_bindir}/alacritty
-#%{_datadir}/applications/*.desktop
+%{_datadir}/applications/*.desktop
 %{_datadir}/%{name}/*.yml
 %{_datadir}/terminfo/*
 
