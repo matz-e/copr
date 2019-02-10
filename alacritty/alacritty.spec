@@ -9,7 +9,7 @@ Release:        1%{?dist}
 URL:            %{git_url}
 
 Version:        0.2.7
-Release:        2.git%{abbrev}%{?dist}
+Release:        1.git%{abbrev}%{?dist}
 Source0:        %{git_url}/archive/%{commit}/%{git_owner}-%{name}-%{abbrev}.tar.gz
 
 Requires:       xclip
