@@ -6,7 +6,7 @@
 Name:           alacritty
 Summary:        A cross-platform, GPU enhanced terminal emulator
 License:        ASL 2.0
-Release:        0%{?dist}
+Release:        1%{?dist}
 URL:            %{git_url}
 
 Version:        0.3.2
@@ -41,6 +41,9 @@ install -d -m755 %{buildroot}/%{_datadir}/%{name}
 install -m644 alacritty*.yml %{buildroot}/%{_datadir}/%{name}
 cat extra/alacritty.man | gzip - > extra/alacritty.1.gz
 install -D -m644 extra/alacritty.1.gz %{buildroot}/%{_mandir}/man1/alacritty.1.gz
+install -D -m644 extra/completions/_alacritty %{buildroot}/%{_datadir}/zsh/site-functions/_alacritty
+install -D -m644 extra/completions/alacritty.bash %{buildroot}/%{_datadir}/bash/bash-completion/completions/alacritty/alacritty.bash
+install -D -m644 extra/completions/alacritty.fish %{buildroot}/%{_datadir}/fish/vendor_completions.d/alacritty.fish
 # install -D -m755 extra/alacritty.info %{buildroot}/%{_datadir}/terminfo/a
 tic -xe alacritty,alacritty-direct -o %{buildroot}/%{_datadir}/terminfo extra/alacritty.info
 
@@ -54,14 +57,22 @@ update-desktop-database &> /dev/null ||:
 desktop-file-validate %{_datadir}/applications/alacritty.desktop &> /dev/null || :
 
 %files
+%license LICENSE-APACHE
+%doc README.md CHANGELOG.md
 %{_bindir}/alacritty
-%{_datadir}/applications/*.desktop
-%{_datadir}/pixmaps/Alacritty.svg
+%{_mandir}/man1/alacritty.1.gz
 %{_datadir}/%{name}/*.yml
+%{_datadir}/applications/*.desktop
+%{_datadir}/bash
+%{_datadir}/fish
+%{_datadir}/pixmaps/Alacritty.svg
 %{_datadir}/terminfo/a/alacritty*
-%doc %{_mandir}/man1/alacritty.1.gz
+%{_datadir}/zsh
 
 %changelog
+* Sun May 05 2019 matz-e <m@sushinara.net> 0.3.2-1
+- Add shell completions
+
 * Sat Apr 27 2019 matz-e <m@sushinara.net> 0.3.2
 - Bump to 0.3.2
 
